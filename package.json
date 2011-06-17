@@ -1,6 +1,6 @@
 { "name" : "typecheck"
 , "description" : "type checker"
-, "version" : "0.0.2"
+, "version" : "0.0.4"
 , "author" : "schrodingerz.kitten@gmail.com"
 }
 
