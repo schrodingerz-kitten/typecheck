@@ -14,10 +14,21 @@ tc.check(s, "string"); // return true
 tc.check(s, "number"); // return false
 tc.assert(s, "function"); // throw TypeError
 ```
+# Methods
+
++ check(v, t)  
+if the type of v is t, this method returns true. otherwise it returns false.
+
++ check([v0, v1, v2, ...], t)  
+if the types of v0, v1, v2, ... are all the same as t, this method returns true. otherwise it returns false.
+
++ assert(v, t)  
+if check(v, t) returns false, this method throws TypeError.
+
++ assert([v0, v1, v2, ...], t)  
+if check([v0, v1, v2, ...], t) returns false, this method throws TypeError.
 
 # Supported types
-
-typecheck suports the following types.  
 
 + undefined  
 {x: typeof x == "undefined"}
