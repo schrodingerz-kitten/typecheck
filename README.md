@@ -17,7 +17,7 @@ tc.assert(s, "function"); // throw TypeError
 
 # Supported types
 
-typecheck suports the following types.
+typecheck suports the following types.  
 
 + undefined  
 {x: typeof x == "undefined"}
@@ -44,19 +44,19 @@ typecheck suports the following types.
 {x: x instanceof Array}
 
 + integer  
-{x: x is a number, x % 1 == 0}
+{x: check(x, "number"), x % 1 == 0}
 
 + int32  
-{x: x is a integer, x >= -2147483648, x < 2147483648}
+{x: check(x, "integer"), x >= -2147483648, x < 2147483648}
 
 + uint32    
-{x: x is a integer, x >= 0, x < 4294967296}
+{x: check(x, "integer"), x >= 0, x < 4294967296}
 
 + even  
-{x: x is a integer, x % 2 == 0}
+{x: check(x, "integer"), x % 2 == 0}
 
 + odd  
-{x: x is a integer, x % 2 == 1}
+{x: check(x, "integer"), x % 2 == 1}
 
 + true  
 {x: x ? true : false}
@@ -64,6 +64,27 @@ typecheck suports the following types.
 + false  
 {x: x ? false : true}
 
-+ i..j%k (integer range)  
-{x: x is a integer, x >= i, x <= j, x - i % k == 0}
++ i..  
+{x: check(x, "integer"), x >= i} ({i: check(i, "integer")})
+
++ ..j  
+{x: check(x, "integer"), x <= j} ({j: check(j, "integer)})
+
++ i..j  
+{x: check(x, "integer"), x >= i, x <= j} ({i,j: check([i,j] "integer")})
+
++ i..%k  
+{x: check(x, "integer"), x>= i, x - i % k == 0} ({i,k: check([i,k], "integer"), k > 0})
+
++ ..j%k  
+{x: check(x, "integer"), x <= j, j - x % k == 0} ({j,k: check(([j,k], "integer"), k > 0})
+
++ i..j%k  
+{x: check(x, "integer"), x >= i, x <= j, x - i % k == 0} ({i,j,k: check([i,j,k], "integer"), k >0})
+
++ function object 'f'  
+{x: x instanceof f} ({f: check(f, "function")})
+
++ [t0, t1, t2, ...]  
+{x: check(x, t0) or check(x, t1) or x check(x, t2) or ...}
 
