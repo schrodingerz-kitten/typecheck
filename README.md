@@ -6,13 +6,16 @@ typecheck is a type checker for JavaScript.
 
 typecheck gives a singleton instance, which have the two methods: 'check' and 'assert'.
 
-    var tc = require('typecheck').getInstance();
-    var s = "abc";  
-    tc.check(s, "string"); // return true  
-    tc.check(s, "number"); // return false  
-    tc.assert(s, "function"); // throw TypeError  
+```js
+var tc = require('typecheck').getInstance();
 
-# Types
+var s = "abc";
+tc.check(s, "string"); // return true 
+tc.check(s, "number"); // return false
+tc.assert(s, "function"); // throw TypeError
+```
+
+# Supported types
 
 typecheck suports the following types.
 
