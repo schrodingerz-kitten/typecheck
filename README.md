@@ -6,12 +6,11 @@ typecheck is a type checker for JavaScript.
 
 typecheck gives a singleton instance, which have the two methods: 'check' and 'assert'.
 
-> var tc = require('typecheck').getInstance();
-> 
-> var s = "abc";  
-> tc.check(s, "string"); // return true  
-> tc.check(s, "number"); // return false  
-> tc.assert(s, "function"); // throw TypeError  
+    var tc = require('typecheck').getInstance();
+    var s = "abc";  
+    tc.check(s, "string"); // return true  
+    tc.check(s, "number"); // return false  
+    tc.assert(s, "function"); // throw TypeError  
 
 # Types
 
@@ -42,19 +41,19 @@ typecheck suports the following types.
 {x: x instanceof Array}
 
 + integer  
-{x: x is a number && x % 1 == 0}
+{x: x is a number, x % 1 == 0}
 
 + int32  
-{x: x is a integer && x >= -2147483648 && x < 2147483648}
+{x: x is a integer, x >= -2147483648, x < 2147483648}
 
 + uint32    
-{x: x is a integer && x >= 0 && x < 4294967296}
+{x: x is a integer, x >= 0, x < 4294967296}
 
 + even  
-{x: x is a integer && x % 2 == 0}
+{x: x is a integer, x % 2 == 0}
 
 + odd  
-{x: x is a integer && x % 2 == 1}
+{x: x is a integer, x % 2 == 1}
 
 + true  
 {x: x ? true : false}
@@ -63,5 +62,5 @@ typecheck suports the following types.
 {x: x ? false : true}
 
 + i..j%k (integer range)  
-{x: x is a integer && x >= i && x <= j && x - i % k == 0}
+{x: x is a integer, x >= i, x <= j, x - i % k == 0}
 
