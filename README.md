@@ -76,22 +76,22 @@ assert(v) is the same as assert(v, "true").
 {x: check(x, "integer"), x >= i} ({i: check(i, "integer")})
 
 + ..j  
-{x: check(x, "integer"), x <= j} ({j: check(j, "integer)})
+{x: check(x, "integer"), x <= j} ({j: check(j, "integer")})
 
 + i..j  
-{x: check(x, "integer"), x >= i, x <= j} ({i,j: check([i,j] "integer*")})
+{x: check(x, "integer"), x >= i, x <= j} ({i,j: check([i,j], "integer*")})
 
 + %k  
 {x: check(x, "integer"), x % k == 0} ({k: check(k, "integer"), k > 0})
 
 + i..%k  
-{x: check(x, "integer"), x>= i, x - i % k == 0} ({i,k: check([i,k], "integer*"), k > 0})
+{x: check(x, "integer"), x >= i, x - i % k == 0} ({i,k: check([i,k], "integer*"), k > 0})
 
 + ..j%k  
-{x: check(x, "integer"), x <= j, j - x % k == 0} ({j,k: check(([j,k], "integer*"), k > 0})
+{x: check(x, "integer"), x <= j, j - x % k == 0} ({j,k: check([j,k], "integer*"), k > 0})
 
 + i..j%k  
-{x: check(x, "integer"), x >= i, x <= j, x - i % k == 0} ({i,j,k: check([i,j,k], "integer*"), k >0})
+{x: check(x, "integer"), x >= i, x <= j, x - i % k == 0} ({i,j,k: check([i,j,k], "integer*"), k > 0})
 
 + function object 'f'  
 {x: x instanceof f} ({f: check(f, "function")})
