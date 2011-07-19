@@ -14,6 +14,7 @@ tc.check(s, "string"); // return true
 tc.check(s, "number"); // return false
 tc.assert(s, "function"); // throw TypeError
 ```
+
 # Methods
 
 + check(v[, t])  
@@ -24,7 +25,7 @@ check(v) is the same as check(v, "true").
 if check(v, t) returns false, this method throws TypeError.  
 assert(v) is the same as assert(v, "true").
 
-# Supported types
+# Types
 
 + undefined  
 {x: typeof x == "undefined"}
@@ -80,6 +81,9 @@ assert(v) is the same as assert(v, "true").
 + i..j  
 {x: check(x, "integer"), x >= i, x <= j} ({i,j: check([i,j] "integer*")})
 
++ %k  
+{x: check(x, "integer"), x % k == 0} ({k: check(k, "integer"), k > 0})
+
 + i..%k  
 {x: check(x, "integer"), x>= i, x - i % k == 0} ({i,k: check([i,k], "integer*"), k > 0})
 
@@ -97,4 +101,13 @@ assert(v) is the same as assert(v, "true").
 
 + [t0, t1, t2, ...]  
 {x: check(x, t0) or check(x, t1) or x check(x, t2) or ...}
+
+# Examples
+
+```js
+tc.check([1,2,3], "array");
+tc.check([1,2,3], "integer*");
+tc.check([[1],[2],[3]], "integer**");
+tc.check([1,3,5], "1..5%2*");
+```
 
